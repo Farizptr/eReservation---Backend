@@ -1,0 +1,5 @@
+#Ignore the service account key
+ereservation-f5852-firebase-adminsdk-fhiyz-e5444c7ba7
+
+#Ignore the .env file
+.env
