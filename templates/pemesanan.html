@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pemesanan ATK/Barang</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+        }
+
+        th,
+        td {
+            padding: 5px;
+        }
+
+
+        th {
+            text-align: center;
+        }
+
+        tbody td {
+            text-align: center;
+            /* Center align text in all <td> elements within <tbody> */
+        }
+
+        tbody td:nth-child(2) {
+            text-align: left;
+            /* Override center alignment for second column (nama_barang) */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img src="{{ url_for('static', filename='images/logo-kit.png') }}" alt="Deskcription of image"
+                style="width: 350px; height: auto;">
+        </div>
+        <div style="text-align: center; font-weight: bold; margin-bottom: 10px; font-size: large;">
+            <div>FORM PEMESANAN ATK/BARANG</div>
+        </div>
+        <table>
+            <thead>
+                <colgroup>
+                    <col style="width: 5%;"> <!-- Column 1: No (smaller width) -->
+                    <col style="width: 35%;"> <!-- Column 2: Nama Barang -->
+                    <col style="width: 5%;"> <!-- Column 3: Qty -->
+                    <col style="width: 20%;"> <!-- Column 4: Satuan -->
+                    <col style="width: 35%;"> <!-- Column 5: Keterangan -->
+                </colgroup>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Barang</th>
+                    <th>Qty</th>
+                    <th>Satuan</th>
+                    <th>Keterangan</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.no }}</td>
+                    <td>{{ item.nama_barang }}</td>
+                    <td>{{ item.qty }}</td>
+                    <td>{{ item.satuan }}</td>
+                    <td>{{ item.keterangan }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div style="margin-top: 10px; margin-bottom: 10px; padding-left: 35px; font-size: smaller;">
+            CC: {{ cc }}
+        </div>
+        <div style="text-align: right; padding-right: 70px;">
+            Cilegon, {{ order_date }}
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+            <div style="width: 45%;">
+                <div style="margin-bottom: 100px; text-align: center;">Pemesan</div>
+                <div style="text-align: center; font-weight: bold;">Fitriyani</div>
+            </div>
+            <div style="width: 45%;">
+                <div style="margin-bottom: 100px; text-align: center; ">Menyetujui</div>
+                <div style="justify-content: center; align-items: center; font-weight: bold;">
+                    <div style="text-align: center;">
+                        ( Andilk Budi Suciono )
+                    </div>
+                    <div style="text-align: center;">
+                        Trading & Proc. Grup Leader
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

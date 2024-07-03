@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pemesanan Konsumsi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-weight: bold;
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+        }
+
+        th,
+        td {
+            padding: 5px;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        tbody td {
+            text-align: center;
+            /* Center align text in all <td> elements within <tbody> */
+        }
+
+        tbody td:nth-child(2) {
+            text-align: left;
+            /* Override center alignment for second column (nama_barang) */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div style="display: flex; border: 1px solid #000;">
+            <div style="padding: 10px;">
+                <img src="{{ url_for('static', filename='images/logo-kit.png') }}" alt="Deskcription of image"
+                    style="width: 200px; height: auto;">
+            </div>
+            <div
+                style="width: 150px; text-align: center; font-size: larger; font-weight: bold; display: flex; align-items: center; border-left: 1px solid #000; border-right: 1px solid #000;">
+                Permintaan Uang Muka
+            </div>
+            <div
+                style="width: 128px; font-size: small; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #000;">
+                <div style="display: flex; align-items: center; padding-left: 2px;">No. Dokumen</div>
+                <div
+                    style="border-top: 1px solid #000; border-bottom: 1px solid #000; display: flex; align-items: center; padding-left: 2px;">
+                    Revisi</div>
+                <div style="border-bottom: 1px solid #000; display: flex; align-items: center; padding-left: 2px;">
+                    Tanggal</div>
+                <div style="display: flex; align-items: center; padding-left: 2px;">Halaman</div>
+            </div>
+            <div
+                style="width: 128px; font-size: small; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="display: flex; align-items: center; padding-left: 2px;">FR-05.01.00.01</div>
+                <div
+                    style="border-top: 1px solid #000; border-bottom: 1px solid #000; display: flex; align-items: center; padding-left: 2px;">
+                    0</div>
+                <div style="border-bottom: 1px solid #000; display: flex; align-items: center; padding-left: 2px;">
+                    29-Apr-19</div>
+                <div style="display: flex; align-items: center; padding-left: 2px; justify-content: center;">1</div>
+            </div>
+        </div>
+        <div
+            style="margin-top: 10px; ; margin-bottom: 10px; text-align: center; padding-left: 95px; font-weight: bold; font-size: small;">
+            No. :</div>
+        <div style="display: flex; justify-content: space-between; font-weight: bold;">
+            <div style="width: 45%; font-style: italic; font-size: small;">
+                <div>HARAP DAPAT DIBERIKAN UANG MUKA</div>
+                <div style="display: flex; margin-top: 10px;">
+                    <div>SEBESAR :</div>
+                    <div
+                        style="width: 70%; display: flex; justify-content: space-between; padding-left: 10px; padding-right: 10px;">
+                        <div>Rp</div>
+                        <div>{{ total }}</div>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 45%; font-size: small;">
+                <div>
+                    Pusat biaya no. : M1001
+                </div>
+                <div style="display: flex; border:1px solid #000;margin-top: 10px;">
+                    <div style="width: 115px; padding-top: 5px; padding-bottom: 5px; padding-left: 2px;">Dianggarkan
+                    </div>
+                    <div
+                        style="border-right: 1px solid #000; border-left: 1px solid #000; width: 130px; display: flex; justify-content: center; align-items: center;">
+                        tdk. Dianggarkan</div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div
+            style="width: 100%; transform: skew(-14deg); border: 1px solid #000; margin-top: 5px; font-weight: bold; padding-top: 5px; padding-bottom: 5px; background-color: rgb(228, 228, 228); padding-left: 50px; width: 91%; font-size: small;">
+            {{ teks_kapital }}
+        </div>
+        <div
+            style="display: flex; font-weight: bold; font-style: italic; margin-top: 20px; margin-bottom: 10px; justify-content: space-between; font-size: small;">
+            <div>UNTUK KEPERLUAN :</div>
+            <div>{{ keperluan }}</div>
+        </div>
+        <div style="font-weight: bold; font-style: italic; margin-bottom: 20px; font-size: small;">DENGAN PERINCIAN
+            SEBAGAI BERIKUT :
+        </div>
+        <table>
+            <thead>
+                <colgroup>
+                    <col style="width: 5%;"> <!-- Column 1: No (smaller width) -->
+                    <col style="width: 40%;"> <!-- Column 2: Nama Barang -->
+                    <col style="width: 5%;"> <!-- Column 3: Qty -->
+                    <col style="width: 25%;"> <!-- Column 4: Satuan -->
+                    <col style="width: 25%;"> <!-- Column 5: Keterangan -->
+                </colgroup>
+                <tr>
+                    <th>No</th>
+                    <th>URAIAN</th>
+                    <th>Jumlah</th>
+                    <th>Harga Satuan</th>
+                    <th>Jumlah Rupiah</th>
+                </tr>
+            </thead>
+            <tbody style="font-size: small;">
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.no }}</td>
+                    <td>{{ item.uraian }}</td>
+                    <td>{{ item.jumlah }}</td>
+                    <td>
+                        <div style="display: flex; justify-content: space-between;">
+                            <div>Rp</div>
+                            <div>
+                                {{ item.satuan_harga }}
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="display: flex; justify-content: space-between;">
+                            <div>Rp</div>
+                            <div>
+                                {{ item.total_satuan }}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+                <td colspan="4">TOTAL</td>
+                <td style="text-align: center;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <div>Rp</div>
+                        <div>
+                            {{ total }}
+                        </div>
+                    </div>
+                </td>
+            </tbody>
+        </table>
+        <div style="font-size:small">
+            <div style="font-weight: bold; margin-top: 30px;">Penanggung jawab uang muka Novi Hotimah</div>
+            <div style="font-weight: bold; display: flex; width: 100%; justify-content: space-between;">
+                <div>Mandiri Bank 1630003541110</div>
+                <div>Cilegon, {{ order_date }}</div>
+            </div>
+            <div style="font-weight: bold; text-align: center;">
+                Pemohon
+            </div>
+            <div style="font-weight: bold; text-align: center; margin-top: 100px;">
+                <div style="text-decoration: underline;">Andik Budi Suciono</div>
+                <div>Chief Trading & Procurement</div>
+            </div>
+            <div style="font-weight: bold; text-align: center; margin-top: 20px;">Disetujui Oleh</div>
+            <div style="font-weight: bold; text-align: center; margin-top: 100px;">
+                <div style="text-decoration: underline;">Erwan Susanto</div>
+                <div>Direktur</div>
+            </div>
+            <div style="font-weight: bold;">
+
+                <div style="text-decoration: underline; margin-bottom: 20px; margin-top: 50px;">Perhatian !!:</div>
+                <div>
+                    1. UM ini harus sudah dipertanggung jawabkan
+                </div>
+                <div style="padding-left: 18px;">
+                    selambat - lambat nya dalam waktu 2 (dua) minggu
+                </div>
+                <div>
+                    2. Lebih dari 2 (dua) minggu tanpa alasan gaji pemohon akan ditahan
+                </div>
+                <div>
+                    3. Isilah dengan lengkap dan jelas
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
