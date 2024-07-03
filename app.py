@@ -1,12 +1,18 @@
 from flask import Flask, render_template, make_response, jsonify, request
 from weasyprint import HTML
 from num2words import num2words
+from dotenv import load_dotenv
+load_dotenv()
+
+
+import os
 import firebase_admin
 from firebase_admin import credentials, firestore
 
 
 
 app = Flask(__name__)
+service_key_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
 cred = credentials.Certificate("./ereservation-f5852-firebase-adminsdk-fhiyz-e5444c7ba7.json")
 firebase_admin.initialize_app(cred)
 # Initialize Firestore DB
