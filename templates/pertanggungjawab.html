@@ -174,391 +174,80 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for item in items %}
+                    {% if item.no == 1 %}
                     <tr>
-                        <td rowspan="3">1</td>
-                        <td rowspan="23" style="text-align: center;">Tokopedia</td>
-                        <td style="text-align: left;">AMP Crimping tool CAT 5</td>
-                        <td style="text-align: center;">1</td>
+                        <td rowspan="{{item.rowspan}}">{{item.no}}</td>
+                        <td rowspan="{{rowspan_total}}" style="text-align: center;">Tokopedia</td>
+                        <td style="text-align: left;">{{ item.uraian}}</td>
+                        <td style="text-align: center;">{{item.jumlah}}</td>
                         <td>
                             <div style="display: flex; justify-content: space-between;">
                                 <div>Rp</div>
-                                <div>1.420.000</div>
+                                <div>{{item.satuan_harga}}</div>
                             </div>
                         </td>
                         <td>
                             <div style="display: flex; justify-content: space-between;">
                                 <div>Rp</div>
-                                <div>1.420.000</div>
+                                <div>{{item.total_satuan}}</div>
                             </div>
                         </td>
-                        <td rowspan="23" style="word-wrap: break-word;">KD42402/333400081</td>
+                        <td rowspan="{{rowspan_total}}" style="word-wrap: break-word;">KD42402/333400081</td>
                     </tr>
+                    {% else %}
                     <tr>
-                        <td style="text-align: left;">Biaya Asuransi Pengiriman</td>
-                        <td style="text-align: center;">1</td>
+                        <td rowspan="{{item.rowspan}}">{{item.no}}</td>
+                        <td style="text-align: left;">{{item.uraian}}</td>
+                        <td style="text-align: center;">{{item.jumlah}}</td>
                         <td>
                             <div style="display: flex; justify-content: space-between;">
                                 <div>Rp</div>
-                                <div>8.600</div>
+                                <div>{{item.satuan_harga}}</div>
                             </div>
                         </td>
                         <td>
                             <div style="display: flex; justify-content: space-between;">
                                 <div>Rp</div>
-                                <div>8.600</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">Biaya Layanan</td>
-                        <td style="text-align: center;">1</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>1.000</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>1.000</div>
+                                <div>{{item.total_satuan}}</div>
                             </div>
                         </td>
                     </tr>
+
+                    {% endif %}
+                    {% for tambahan in item.tambahan %}
                     <tr>
-                        <td>2</td>
-                        <td style="text-align: left;">Bside FWT81 Cable Tracker Network Wire Tester LAN Kabel Finder
-                            RJ45</td>
-                        <td style="text-align: center;">1</td>
+                        <td style="text-align: left;">{{tambahan.deskripsi}}</td>
+                        <td style="text-align: center;">{{tambahan.jumlah}}</td>
                         <td>
                             <div style="display: flex; justify-content: space-between;">
                                 <div>Rp</div>
-                                <div>405.000</div>
+                                <div>{{tambahan.harga}}</div>
                             </div>
                         </td>
                         <td>
                             <div style="display: flex; justify-content: space-between;">
                                 <div>Rp</div>
-                                <div>405.000</div>
+                                <div>{{tambahan.total}}</div>
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td rowspan="3">3</td>
-                        <td style="text-align: left;">VFL Laser Fiber Optic MERK NOVKER 15mw</td>
-                        <td style="text-align: center;">1</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>451.000</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>451.000</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">Biaya Ongkir</td>
-                        <td style="text-align: center;">1</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>8.000</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>8.000</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">Biaya Asuransi Pengiriman</td>
-                        <td style="text-align: center;">1</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>1.900</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>1.900</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td rowspan="5">4</td>
-                        <td style="text-align: left;">Protection Sleeve Dropcore</td>
-                        <td style="text-align: center;">40</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>25.000</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>25.000</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">Biaya Ongkir</td>
-                        <td style="text-align: center;">1</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>96.000</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>96.000</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">Biaya Asuransi Pengiriman</td>
-                        <td style="text-align: center;">1</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>7.700</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>7.700</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">Biaya Layanan</td>
-                        <td style="text-align: center;">1</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>1.000</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>1.000</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">Biaya Jasa Aplikasi</td>
-                        <td style="text-align: center;">1</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>1.000</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>1.000</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td style="text-align: left;">Epson Label Printer LW-K400</td>
-                        <td style="text-align: center;">1</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>770.000</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>770.000</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td rowspan="5">6</td>
-                        <td style="text-align: left;">Fiber Optic Stripper 3hole/Tang</td>
-                        <td style="text-align: center;">2</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>51.000</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>102.000</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">Biaya Ongkir</td>
-                        <td style="text-align: center;">1</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>8.000</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>8.000</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">Biaya Asuransi Pengiriman</td>
-                        <td style="text-align: center;">1</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>700</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>700</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">Biaya Layanan</td>
-                        <td style="text-align: center;">1</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>1.000</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>1.000</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">Biaya Jasa Aplikasi</td>
-                        <td style="text-align: center;">1</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>1.000</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>1.000</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td rowspan="5">7</td>
-                        <td style="text-align: left;">OFI Joinwit 3306b Optical Fiber identifier</td>
-                        <td style="text-align: center;">2</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>2.100.000</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>4.200.000</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">Biaya Ongkir</td>
-                        <td style="text-align: center;">1</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>8.000</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>8.000</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">Biaya Asuransi Pengiriman</td>
-                        <td style="text-align: center;">1</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>25.300</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>25.300</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">Biaya Layanan</td>
-                        <td style="text-align: center;">1</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>1.000</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>1.000</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">Biaya Jasa Aplikasi</td>
-                        <td style="text-align: center;">1</td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>1.000</div>
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>Rp</div>
-                                <div>1.000</div>
-                            </div>
-                        </td>
-                    </tr>
+                    {% endfor %}
+                    {% endfor %}
+
+
+                   
+                 
+                  
+                    
+    
                     <tr>
                         <td></td>
                         <td colspan="4" style="text-align: center;">GRAND TOTAL</td>
                         <td>
                             <div style="display: flex; justify-content: space-between;">
                                 <div>Rp</div>
-                                <div>8.519.200</div>
+                                <div>{{ grand_total }}</div>
                             </div>
                         </td>
                         <td></td>
@@ -588,13 +277,12 @@
                                 <div style="text-align: left;">
                                     Terbilang :
                                 </div>
-                                <div style="margin-top: 12px;">Delapan Juta Lima Ratus Sembilan Belas Ribu Dua Ratus
-                                    Rupiah</div>
+                                <div style="margin-top: 12px;">{{teks_kapital}}</div>
                             </div>
                         </th>
                         <td colspan="3" style="padding: 0;">
                             <div style="text-align: center; padding-top: 1px; padding-bottom: 1px;">
-                                <div>Cilegon, 28 Mei 2024</div>
+                                <div>Cilegon, {{order_date}}</div>
                                 <div style="margin-bottom: 50px;">Dipertanggung jawaban</div>
                                 <div style="text-decoration: underline  ;">Andik Budi Suciono</div>
                                 <div>Chief Trading & Procurement</div>
@@ -606,11 +294,11 @@
                             <div style="text-align:left; padding: 2px; margin-bottom: 10px;">
                                 <div style="display: flex; justify-content: space-between;">
                                     <div>Uang Muka Rp</div>
-                                    <div>18.625.000</div>
+                                    <div>{{ total }}</div>
                                 </div>
                                 <div style="display: flex; justify-content: space-between;">
                                     <div>Pengeluaran Rp</div>
-                                    <div>8.519.200</div>
+                                    <div>{{ grand_total }}</div>
                                 </div>
                             </div>
                         </td>
