@@ -7,7 +7,7 @@ from firebase_admin import credentials, firestore
 # Initialize logging
 
 app = Flask(__name__)
-cred = credentials.Certificate("./ereservation-f5852-firebase-adminsdk-fhiyz-6fd24afc21.json")
+cred = credentials.Certificate("./ereservation-f5852-firebase-adminsdk-fhiyz-3df40c73aa.json")
 firebase_admin.initialize_app(cred)
 # Initialize Firestore DB
 db = firestore.client()
