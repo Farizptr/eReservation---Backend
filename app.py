@@ -170,6 +170,7 @@ def generate_pertanggungjawab(doc_id):
 
         # Fetch the list of barang items
         barang_items = order.get("barang", [])
+        noACCT= order.get("noACCT","")
         
         for item in barang_items:
             items_tambahan=[]
@@ -178,6 +179,7 @@ def generate_pertanggungjawab(doc_id):
                 jumlah = int(item.get("jumlah_barang", 0))
                 satuan_harga = int(item.get("satuan_harga", 0))
                 satuan_harga_akhir=int(item.get("harga_akhir",0))
+               
                 toko = item.get("toko", "")
                 total_satuan = jumlah * satuan_harga
                 total_akhir=satuan_harga_akhir * jumlah
@@ -189,7 +191,6 @@ def generate_pertanggungjawab(doc_id):
                         jumlah_tambahan = int(tambahan.get("jumlah", 0))
                         total_harga_tambahan = harga_tambahan * jumlah_tambahan
                         grand_total+=total_harga_tambahan
-                        print("Total : ",grand_total)
 
                         
 
@@ -209,8 +210,8 @@ def generate_pertanggungjawab(doc_id):
                     "jumlah": "{:,}".format(jumlah).replace(',', '.'),
                     "satuan_harga": "{:,}".format(satuan_harga_akhir).replace(',', '.'),
                     "total_satuan": "{:,}".format(total_akhir).replace(',', '.'),
-                    "toko": toko,
                     "rowspan": rowspan,
+                    "toko": item.get("toko", ""),
                     "tambahan": items_tambahan,
                 })
                 counter += 1
@@ -222,6 +223,9 @@ def generate_pertanggungjawab(doc_id):
         print("\n")
         print("Items array:", items)
         print("\n")
+        print("Total : ",noACCT)
+        print("\n")
+
         angka = int(grand_total)
         teks = num2words(angka, lang='id')
         teks_kapital = teks.capitalize() + " rupiah"
@@ -235,7 +239,7 @@ def generate_pertanggungjawab(doc_id):
         cc = order.get("cc", "")
 
         # Render the template with fetched data
-        rendered_html = render_template('pertanggungjawab.html', items=items, grand_total=grand_total, order_date=order_date, total=total, teks_kapital=teks_kapital, cc=cc, tambahan=items_tambahan, rowspan_total=rowspan_total)
+        rendered_html = render_template('pertanggungjawab.html', items=items, grand_total=grand_total, order_date=order_date, total=total, teks_kapital=teks_kapital, cc=cc, tambahan=items_tambahan, rowspan_total=rowspan_total, noACCT=noACCT)
 
         # Generate PDF using WeasyPrint
         pdf = HTML(string=rendered_html, base_url=request.base_url).write_pdf()
