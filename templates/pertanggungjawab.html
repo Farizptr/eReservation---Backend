@@ -176,6 +176,8 @@
                 <tbody>
                     {% for item in items %}
                     {% if item.no == 1 %}
+                    {% for item in items %}
+                    {% if item.no == 1 %}
                     <tr>
                         <td rowspan="{{item.rowspan}}">{{item.no}}</td>
                         <td rowspan="{{item.rowspan}}" style="text-align: center;">{{item.toko}}</td>
@@ -185,11 +187,13 @@
                             <div style="display: flex; justify-content: space-between;">
                                 <div>Rp</div>
                                 <div>{{item.satuan_harga}}</div>
+                                <div>{{item.satuan_harga}}</div>
                             </div>
                         </td>
                         <td>
                             <div style="display: flex; justify-content: space-between;">
                                 <div>Rp</div>
+                                <div>{{item.total_satuan}}</div>
                                 <div>{{item.total_satuan}}</div>
                             </div>
                         </td>
