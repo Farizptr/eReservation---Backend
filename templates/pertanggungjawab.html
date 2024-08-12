@@ -178,7 +178,7 @@
                     {% if item.no == 1 %}
                     <tr>
                         <td rowspan="{{item.rowspan}}">{{item.no}}</td>
-                        <td rowspan="{{rowspan_total}}" style="text-align: center;">Tokopedia</td>
+                        <td rowspan="{{item.rowspan}}" style="text-align: center;">{{item.toko}}</td>
                         <td style="text-align: left;">{{ item.uraian}}</td>
                         <td style="text-align: center;">{{item.jumlah}}</td>
                         <td>
@@ -198,6 +198,7 @@
                     {% else %}
                     <tr>
                         <td rowspan="{{item.rowspan}}">{{item.no}}</td>
+                        <td rowspan="{{item.rowspan}}" style="text-align: center;">{{item.toko}}</td>
                         <td style="text-align: left;">{{item.uraian}}</td>
                         <td style="text-align: center;">{{item.jumlah}}</td>
                         <td>

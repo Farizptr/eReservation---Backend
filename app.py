@@ -178,6 +178,7 @@ def generate_pertanggungjawab(doc_id):
                 jumlah = int(item.get("jumlah_barang", 0))
                 satuan_harga = int(item.get("satuan_harga", 0))
                 satuan_harga_akhir=int(item.get("harga_akhir",0))
+                toko = item.get("toko", "")
                 total_satuan = jumlah * satuan_harga
                 total_akhir=satuan_harga_akhir * jumlah
                 tambahan_items = item.get("tambahan", [])
@@ -208,6 +209,7 @@ def generate_pertanggungjawab(doc_id):
                     "jumlah": "{:,}".format(jumlah).replace(',', '.'),
                     "satuan_harga": "{:,}".format(satuan_harga_akhir).replace(',', '.'),
                     "total_satuan": "{:,}".format(total_akhir).replace(',', '.'),
+                    "toko": toko,
                     "rowspan": rowspan,
                     "tambahan": items_tambahan,
                 })
@@ -249,4 +251,4 @@ def generate_pertanggungjawab(doc_id):
         return f"An error occurred: {e}", 500
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5001)
+    app.run(debug=True, host='0.0.0.0', port=5000)
